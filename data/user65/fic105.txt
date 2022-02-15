@@ -1,0 +1,917 @@
+
+
+
+
+Дамасские ночи | Гарри Поттер
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {$('textarea').autoResize({animate:false, extraSpace : 20, limit: 600});});
+
+
+
+
+
+
+
+
+$(function () {
+    darklight = $('#darklight').html();
+    if (darklight == '1') {
+        var this_color = $('#read_color_darklight').html();
+    } else {
+        var this_color = $('#read_color').html();
+    }
+    const pickr = Pickr.create({
+        el: '.color-picker-text',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_color,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет'
+        }
+    });
+    pickr.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var color_default = $('#read_color_default_darklight').html();
+        } else {
+            var color_default = $('#read_color_default').html();
+        }
+        pickr.setColor(color_default);
+        $('.ReadTextContainerIn').css('color', color_default);
+        $('#read_color_new').html(color_default);
+        read_color_change('color');
+        pickr.hide();
+    }).on('change', color => {
+        new_color = color.toHEXA().toString();
+        pickr.setColor(new_color);
+        $('.ReadTextContainerIn').css('color', new_color);
+        $('#read_color_new').html(new_color);
+    }).on('hide', instance => {
+        read_color_change('color');
+    });
+
+    if (darklight == '1') {
+        var this_background = $('#read_background_darklight').html();
+    } else {
+        var this_background = $('#read_background').html();
+    }
+    const pickr2 = Pickr.create({
+        el: '.color-picker-bg',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_background,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет',
+        }
+    });
+    pickr2.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var background_default = $('#read_background_default_darklight').html();
+        } else {
+            var background_default = $('#read_background_default').html();
+        }
+        pickr2.setColor(background_default);
+        $('.ReadTextContainerIn').css('background', background_default);
+        $('#read_background_new').html(background_default);
+        read_color_change('background');
+        pickr2.hide();
+    }).on('change', color => {
+        new_background = color.toHEXA().toString();
+        pickr2.setColor(new_background);
+        $('.ReadTextContainerIn').css('background', new_background);
+        $('#read_background_new').html(new_background);
+    }).on('hide', instance => {
+        read_color_change('background');
+    });
+
+    // Переключение дневного/ночного режима
+    $('.edit-darklight').click(function () {
+        current = $('#darklight').html();
+
+        if (current == 0) {
+            darklight_on();
+            $('#darklight').html('1');
+            color = $('#read_color_darklight').html();
+            background = $('#read_background_darklight').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=1');
+        } else {
+            $('.darklight').removeClass('darklight');
+            $('#darklight').html('0');
+            color = $('#read_color').html();
+            background = $('#read_background').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            $('.ReadTextContainerIn').css('color', color).css('background', background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=0');
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+ (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13343842 = new Ya.Metrika({ id:13343842, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");  
+
+
+    
+        
+                
+                    &nbsp;&darr;
+                
+        
+        
+                
+                    &nbsp;&uarr;
+                
+        
+    
+
+
+
+    
+        
+
+        
+            ФАНФИКИ МЕНЮ 
+            ФАНДОМЫ
+            ФАНАРТ
+            БЛОГИ
+        
+
+        
+            
+                Фандомы
+                Фанарт
+                Блоги
+                 Популярное
+                Популярное
+                Новинки
+                Горячие новинки
+                Все фанфики
+                Рекомендации
+                Коллекции
+                Заявки
+                Конкурсы
+                Фанфик в файл                Таблица переводов
+                Справка по сайту
+            
+        
+
+        
+        
+            
+                Искать фандом &raquo;
+                Искать фанфик &raquo;
+                Искать канон &raquo;
+                Искать персонажа &raquo;
+                Искать пользователя &raquo;
+            
+        
+
+        ВходРегистрация
+                
+                Регистрация
+            
+                Имя
+                
+                Пароль
+                
+                &nbsp;Чужой&nbsp;компьютер
+                
+                
+                Забыл пароль
+            
+        Войти при помощи
+        
+        
+        
+        
+    
+
+
+
+
+    
+        0
+                
+        
+            .ReadContent {width:100%;}
+            p.fict {font-size: 14px;;}
+            .ReadTextContainerIn {color:#000000; background:#FCFCE8;}
+        
+        Размер шрифта
+        
+            <input type="button" class="modern_button edit-font" data-edit="s" value=" 14px ">
+        
+        
+        Ширина текста
+        
+            <input type="button" class="modern_button edit-width" data-edit="s" value=" 100% ">
+        
+        
+        Выравнивание
+        
+            
+            
+                &nbsp;
+                &nbsp;
+                &nbsp;
+            
+            
+        
+        
+        Цвет текста
+        #000000
+        #EEEEEE
+        #000000
+        #eeeeee
+        
+        
+        
+        Цвет фона
+        #FCFCE8
+        #333333
+        #FCFCE8
+        #333333
+        
+        
+        
+        Показывать иллюстрации
+        
+            Большие
+            Маленькие
+            Без иллюстраций
+        
+    
+
+Закладка добавлена
+        
+            
+            105
+            
+            
+            
+            Дамасские ночи&nbsp;(слэш)
+            56k +1293860Статистика
+            
+        
+            
+                
+            
+            
+            
+                Подписка
+                Прочитано
+                Рекомендовано
+                Скачано
+                Не читать
+                Прочитать позже
+                Жду окончания
+                Понравилось
+                Не понравилось
+                Заметка
+                В коллекции
+            
+        
+            
+            
+            
+            
+            
+            
+			Авторы:
+			Рианон, Libra
+			
+		
+            
+            
+            
+                Фандом:
+                Гарри Поттер
+                
+            
+            Персонажи:Гарри Поттер/Драко МалфойГарри Поттер/Новый Мужской ПерсонажНовый Мужской Персонаж/Новый Мужской Персонаж 
+            
+                Рейтинг:
+                NC-17
+                
+            
+            
+                Жанр:
+                Романтика
+                
+            
+            
+                Размер:
+                Макси | 174 Кб
+                
+            
+            
+                Статус:
+                Заморожен
+                
+            
+            
+               События:
+                Путешествие во времени 
+                
+            
+            
+            
+            
+                &nbsp;
+                 Проверено на&nbsp;грамотность 
+                
+            
+            
+                &nbsp;
+                27.04.2005 - 18.02.2010
+                
+            
+            
+            
+            В результате несчастного случая, Гарри и Драко оказываются в пустыне. Позже они понимают, что попали в прошлое.
+            
+                
+            
+                QRCode
+            
+        
+            
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Глава 1 (Пролог)Глава 2.Глава 3.Глава 4.Глава 5.Глава 6.Глава 7.Глава 8Глава 9.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+
+
+
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            var width = window.innerWidth;
+			if(!width) {
+				if(document.documentElement) {
+					width = document.documentElement.clientWidth;
+				}
+				width = Math.min(width, document.body.clientWidth);
+			}
+			if(!width) {
+				width = screen.width;
+			}
+			if (width > 730) {
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-6",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+			else
+			{
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-10",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+
+ Отключить рекламу
+Текст фанфика доступен для чтения только зарегистрированным пользователям старше 18 летЕсли вам есть 18 лет, вы можете зарегистрироваться и указать в профиле свой возраст - тогда текст фанфика станет доступен
+
+google_ad_client = "ca-pub-6359265769479039";
+google_ad_slot = "3770096198";
+google_ad_width = 300;
+google_ad_height = 250;
+
+	var width = window.innerWidth;
+	if(!width) {
+		if(document.documentElement) {
+			width = document.documentElement.clientWidth;
+		}
+		width = Math.min(width, document.body.clientWidth);
+	}
+	if(!width) {
+		width = screen.width;
+	}
+
+	if (width > 730) {
+		google_ad_slot = "6257650296";
+		google_ad_width = 728;
+		google_ad_height = 90;
+	}
+
+
+
+ Отключить рекламу
+
+
+                    
+            
+            
+                
+                Комментарии авторовПервый комментарий каждого комментатораКомментаторы
+            
+            
+        &nbsp;
+                
+            
+            <div id="comments_ficread_off_buttons" class="left cursor-pointer" title="Не показывать комментарии на странице чтения" style="margin-left:10px;" onclick="pftake('/section_user_properties_post.php?action=comments_ficread_off&subject=fic&subject_id=105', 1, 'comments_ficread_off_buttons', '')">20 комментариев из 86 (показать все)<div class="MessageCommentsReverse" id="MessageCommentsReverse" title="Изменить порядок вывода комментариев" onclick="pftake('/section_user_properties_post.php?action=comments_reverse&subject=fic&subject_id=105&section=fic_read', 1, 'MessageCommentsReverse', '');">
+            <a class="small_link" OnCLick="pftake('/section_message_comment_post.php?action=nextcomments&subject=fic&message_id=105&from=16391&shown=20&section=fic', 0, 'MessageCommentsNext_105', ' Загрузка комментариев');">Показать ещё 20 комментариев
+        
+            
+            
+                Рианонавтор
+                8 февраля 2010
+            
+        
+        
+            
+                Вчера за бокалом пива с тортом несмотря на все инсинуации и критику присутствовавших авторы подробно расписали события на две главы вперед. Часть девятой уже написана, так что рассчитываем выложить ее в ближайшие дни.)
+                
+                
+            
+        
+        
+        
+            
+            
+                kalpybear
+                11 февраля 2010
+            
+        
+        
+            
+                м))) спасииибо за проду.и еще, пообещайте, пожалуйста, что закончите фик))) мне так легче будет)))
+                
+                
+            
+        
+        
+        
+            
+            
+                Рианонавтор
+                11 февраля 2010
+            
+        
+        
+            
+                Мы очень-очень постараемся свершить сей подвиг.)К сожалению 9-ая глава, которую мы планировали выложить до выходных задерживается в связи с компьютерными сложностями одного з авторов.А пока продолжаем выписывать в тетради 10-ю главу.
+                
+                
+            
+        
+        
+        
+            
+            
+                Герда
+                14 февраля 2010
+            
+        
+        
+            
+                Рианон, как говорится, ждём и верим (с). :)
+                
+                
+            
+        
+        
+        
+            
+            
+                Gelte
+                26 февраля 2010
+            
+        
+        
+            
+                ДААААААААА!!! ура! спасибо вам большое, продолжайте в том же духе!!! только проды почаще
+                
+                
+            
+        
+        
+        
+            
+            
+                kalpybear
+                3 апреля 2010
+            
+        
+        
+            
+                ну когдааааа же продолжение?))опять пропали..
+                
+                
+            
+        
+        
+        
+            
+            
+                In vino veritas
+                24 апреля 2010
+            
+        
+        
+            
+                Иногда даже жалеешь,о том, что начинаешь читать незаконченные фики.На мой взгляд, очень стоящее произведение .. но вот продолжение крайне редко выкладываете :(Авторы, ну не мучайте вы свою аудиторию!Хотя бы ориентировочную дату публикаций новых глав называйте..
+                
+                
+            
+        
+        
+        
+            
+            
+                kotya0602
+                12 июля 2010
+            
+        
+        
+            
+                Очень понравилось, прочитала на одном дыхании...жаль только, что проды всё нет и нет :(
+                
+                
+            
+        
+        
+        
+            
+            
+                Adletvostok
+                20 июля 2010
+            
+        
+        
+            
+                О, автор, да храни вас Небо))) фик замечательный)) надеюсь прочитать проду... очень надеюсь....
+                
+                
+            
+        
+        
+        
+            
+            
+                Shailer Swan
+                25 октября 2010
+            
+        
+        
+            
+                Красиво, жаль, что так мало.Но Вы смогли передать чувства в нескольких строчках, спасибо, понравилось))
+                
+                
+            
+        
+        
+        
+            
+            
+                LakRiMoz@
+                9 ноября 2010
+            
+        
+        
+            
+                Вик просто фантастический!!!Атор, ну не томите нас. Когда ждать продолжения???
+                
+                
+            
+        
+        
+        
+            
+            
+                immortal dragon
+                8 декабря 2010
+            
+        
+        
+            
+                очень бы хотелось прочитать продуесть хотя бы надежда? или фанф заброшен?((
+                
+                
+            
+        
+        
+        
+            
+            
+                m.urs
+                12 января 2011
+            
+        
+        
+            
+                очень-очень!близко... безумно близко.спасибо большое
+                
+                
+            
+        
+        
+        
+            
+            
+                _bagira_
+                18 февраля 2011
+            
+        
+        
+            
+                Хих, сегодня ровно год с последнего обновления, к сожелению(((Хотелось бы почитать, но статус &quot;в работе&quot;, и дата последней публикации не позволяют(((
+                
+                
+            
+        
+        
+        
+            
+            
+                Ahe
+                24 апреля 2011
+            
+        
+        
+            
+                Волшебно и просто нереально!  Понравился фик, спасибо!
+                
+                
+            
+        
+        
+        
+            
+            
+                Gelte
+                9 ноября 2011
+            
+        
+        
+            
+                и не смотря не на что это самый замечательный фанф! Даже если его никогда не закончат я буду помнить.. С ним я выросла и даже могу проследить  по комментариям рост мой грамотности.. Спасибо вам большое авторы за восхитительную идею.. А давить из себя проду не надо.. Ведь столько всего изменилось что &quot;ночи&quot; будут уже явно не те)) спасибо за внимание. Томусик 
+                
+                
+            
+        
+        
+        
+            
+            
+                Gelte
+                5 декабря 2013
+            
+        
+        
+            
+                мило мило
+все еще помню,  все еще перечитываю
+                
+                
+            
+        
+        
+        
+            
+            
+                dream_s
+                1 февраля 2014
+            
+        
+        
+            
+                хороший фик ,жаль что мало-идея необычна...может автор всё-таки его когда-нибудь допишет ? или может он на других ресурсах в полном варианте есть???ну или какой-нибудь другой автор допишет эту необычную историю...
+                
+                
+            
+        
+        
+        
+            
+            
+                Solveig Ulv
+                13 июля 2014
+            
+        
+        
+            
+                Жаль, что фанфик заморожен... Он потрясающий...
+                
+                
+            
+        
+        
+        
+            
+            
+                Чудесница
+                10 февраля 2015
+            
+        
+        
+            
+                Читала с удовольствием и действительно жаль видеть печальную судьбу. автор хоть бы сказал пару слов 
+                
+                
+            
+        
+        Чтобы написать комментарий,  войдитеЕсли вы не зарегистрированы, зарегистрируйтесь
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Глава 1 (Пролог)Глава 2.Глава 3.Глава 4.Глава 5.Глава 6.Глава 7.Глава 8Глава 9.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+        Добавление фанфика в избранное
+        
+            
+                Метки
+                Заметка
+                Коллекции
+            
+        
+        
+            
+                
+                    Подписка на новые главы
+                    Прочитано
+                    Скачано
+                    Не читать
+                    Прочитать позже
+                    Жду окончания
+                    Понравилось
+                    Не понравилось
+                
+            
+            
+                
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                
+            
+            
+            
+                Когда фанфик был прочитан:
+                
+                    
+                        
+                        
+                        
+                            12345678910111213141516171819202122232425262728293031
+                        
+                        
+                            ЯнваряФевраляМартаАпреляМаяИюняИюляАвгустаСентябряОктябряНоябряДекабря
+                        
+                        
+                            2022202120202019201820172016201520142013201220112010200920082007200620052004200320022001
+                        
+                        
+                    
+                
+            
+        
+        
+            Здесь вы можете записать любые мысли и факты о произведении. Заметка будет доступна только вам. Максимальная длина заметки 3000 символов.
+            
+                
+                
+                    
+                    
+                
+            
+        
+        {cols}
+    Всё самое любимое (0)&raquo;&raquo;
+        Рекомендую прочитать (0)&raquo;&raquo;
+        Неизгладимые впечатления (0)&raquo;&raquo;
+        Прослушано (0)&raquo;&raquo;
+        Отличная обложка (0)&raquo;&raquo;Создать новую коллекцию
+        
+            <form id="new_collection_form" OnSubmit="pftake('/section_collections_post.php?action=collection_new', 'new_collection_form', 'new_collection_buttons', ''); return false;">
+                Коллекционировать:
+                 Фанфики
+                 Произведения с других сайтов
+                 Сообщения в блогах
+                
+            
+            
+        
+
+    Внимание! Сайт может содержать материалы, не предназначенные для просмотра лицами, не достигшими 18 лет! 
+    
+    Все права на героев и мир принадлежат законным правообладателям.
+    
+    2004-2021 &copy; Fanfics.me
+    
+        <!--
+            document.write("")
+            //-->
+        
+
+    
+        Закрыть
+        
+    
+    
+        Закрыть
+        
+    
+
+
+	Закрыть
+	
+
+&uarr; Вверх
+

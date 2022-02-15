@@ -1,0 +1,913 @@
+
+
+
+
+Задуй свечи | Гарри Поттер
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {$('textarea').autoResize({animate:false, extraSpace : 20, limit: 600});});
+
+
+
+
+
+
+
+
+$(function () {
+    darklight = $('#darklight').html();
+    if (darklight == '1') {
+        var this_color = $('#read_color_darklight').html();
+    } else {
+        var this_color = $('#read_color').html();
+    }
+    const pickr = Pickr.create({
+        el: '.color-picker-text',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_color,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет'
+        }
+    });
+    pickr.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var color_default = $('#read_color_default_darklight').html();
+        } else {
+            var color_default = $('#read_color_default').html();
+        }
+        pickr.setColor(color_default);
+        $('.ReadTextContainerIn').css('color', color_default);
+        $('#read_color_new').html(color_default);
+        read_color_change('color');
+        pickr.hide();
+    }).on('change', color => {
+        new_color = color.toHEXA().toString();
+        pickr.setColor(new_color);
+        $('.ReadTextContainerIn').css('color', new_color);
+        $('#read_color_new').html(new_color);
+    }).on('hide', instance => {
+        read_color_change('color');
+    });
+
+    if (darklight == '1') {
+        var this_background = $('#read_background_darklight').html();
+    } else {
+        var this_background = $('#read_background').html();
+    }
+    const pickr2 = Pickr.create({
+        el: '.color-picker-bg',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_background,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет',
+        }
+    });
+    pickr2.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var background_default = $('#read_background_default_darklight').html();
+        } else {
+            var background_default = $('#read_background_default').html();
+        }
+        pickr2.setColor(background_default);
+        $('.ReadTextContainerIn').css('background', background_default);
+        $('#read_background_new').html(background_default);
+        read_color_change('background');
+        pickr2.hide();
+    }).on('change', color => {
+        new_background = color.toHEXA().toString();
+        pickr2.setColor(new_background);
+        $('.ReadTextContainerIn').css('background', new_background);
+        $('#read_background_new').html(new_background);
+    }).on('hide', instance => {
+        read_color_change('background');
+    });
+
+    // Переключение дневного/ночного режима
+    $('.edit-darklight').click(function () {
+        current = $('#darklight').html();
+
+        if (current == 0) {
+            darklight_on();
+            $('#darklight').html('1');
+            color = $('#read_color_darklight').html();
+            background = $('#read_background_darklight').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=1');
+        } else {
+            $('.darklight').removeClass('darklight');
+            $('#darklight').html('0');
+            color = $('#read_color').html();
+            background = $('#read_background').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            $('.ReadTextContainerIn').css('color', color).css('background', background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=0');
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+ (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13343842 = new Ya.Metrika({ id:13343842, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");  
+
+
+    
+        
+                
+                    &nbsp;&darr;
+                
+        
+        
+                
+                    &nbsp;&uarr;
+                
+        
+    
+
+
+
+    
+        
+
+        
+            ФАНФИКИ МЕНЮ 
+            ФАНДОМЫ
+            ФАНАРТ
+            БЛОГИ
+        
+
+        
+            
+                Фандомы
+                Фанарт
+                Блоги
+                 Популярное
+                Популярное
+                Новинки
+                Горячие новинки
+                Все фанфики
+                Рекомендации
+                Коллекции
+                Заявки
+                Конкурсы
+                Фанфик в файл                Таблица переводов
+                Справка по сайту
+            
+        
+
+        
+        
+            
+                Искать фандом &raquo;
+                Искать фанфик &raquo;
+                Искать канон &raquo;
+                Искать персонажа &raquo;
+                Искать пользователя &raquo;
+            
+        
+
+        ВходРегистрация
+                
+                Регистрация
+            
+                Имя
+                
+                Пароль
+                
+                &nbsp;Чужой&nbsp;компьютер
+                
+                
+                Забыл пароль
+            
+        Войти при помощи
+        
+        
+        
+        
+    
+
+
+
+
+    
+        0
+                
+        
+            .ReadContent {width:100%;}
+            p.fict {font-size: 14px;;}
+            .ReadTextContainerIn {color:#000000; background:#FCFCE8;}
+        
+        Размер шрифта
+        
+            <input type="button" class="modern_button edit-font" data-edit="s" value=" 14px ">
+        
+        
+        Ширина текста
+        
+            <input type="button" class="modern_button edit-width" data-edit="s" value=" 100% ">
+        
+        
+        Выравнивание
+        
+            
+            
+                &nbsp;
+                &nbsp;
+                &nbsp;
+            
+            
+        
+        
+        Цвет текста
+        #000000
+        #EEEEEE
+        #000000
+        #eeeeee
+        
+        
+        
+        Цвет фона
+        #FCFCE8
+        #333333
+        #FCFCE8
+        #333333
+        
+        
+        
+        Показывать иллюстрации
+        
+            Большие
+            Маленькие
+            Без иллюстраций
+        
+    
+
+Закладка добавлена
+        
+            
+            3
+            
+            
+            
+            Задуй свечи&nbsp;(слэш)
+            23k +1450281Статистика
+            
+        
+            
+                
+            
+            
+            
+                Подписка
+                Прочитано
+                Рекомендовано
+                Скачано
+                Не читать
+                Прочитать позже
+                Жду окончания
+                Понравилось
+                Не понравилось
+                Заметка
+                В коллекции
+            
+        
+            
+            
+            
+            
+            
+            
+			Автор:
+			Ray
+			
+		
+            
+            
+            
+                Фандом:
+                Гарри Поттер
+                
+            
+            Персонажи:Гарри Поттер/Драко Малфой 
+            
+                Рейтинг:
+                PG-13
+                
+            
+            
+                Жанр:
+                Романтика
+                
+            
+            
+                Размер:
+                Мини | 15 Кб
+                
+            
+            
+                Статус:
+                Закончен
+                
+            
+            
+            
+            
+            
+                &nbsp;
+                 Проверено на&nbsp;грамотность 
+                
+            
+            
+                &nbsp;
+                30.03.2005 - 30.03.2005
+                
+            
+            
+            
+            Расстаться – серьезное решение. Гарри понимает, что ошибся.
+            
+                
+            
+                QRCode
+            
+        
+            
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Глава 1.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+
+
+
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            var width = window.innerWidth;
+			if(!width) {
+				if(document.documentElement) {
+					width = document.documentElement.clientWidth;
+				}
+				width = Math.min(width, document.body.clientWidth);
+			}
+			if(!width) {
+				width = screen.width;
+			}
+			if (width > 730) {
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-6",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+			else
+			{
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-10",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+
+ Отключить рекламу
+Текст фанфика доступен для чтения только зарегистрированным пользователям старше 18 летЕсли вам есть 18 лет, вы можете зарегистрироваться и указать в профиле свой возраст - тогда текст фанфика станет доступен
+
+google_ad_client = "ca-pub-6359265769479039";
+google_ad_slot = "3770096198";
+google_ad_width = 300;
+google_ad_height = 250;
+
+	var width = window.innerWidth;
+	if(!width) {
+		if(document.documentElement) {
+			width = document.documentElement.clientWidth;
+		}
+		width = Math.min(width, document.body.clientWidth);
+	}
+	if(!width) {
+		width = screen.width;
+	}
+
+	if (width > 730) {
+		google_ad_slot = "6257650296";
+		google_ad_width = 728;
+		google_ad_height = 90;
+	}
+
+
+
+ Отключить рекламу
+
+
+                    
+            
+            
+                
+                Комментарии автораПервый комментарий каждого комментатораКомментаторы
+            
+            
+        &nbsp;
+                
+            
+            <div id="comments_ficread_off_buttons" class="left cursor-pointer" title="Не показывать комментарии на странице чтения" style="margin-left:10px;" onclick="pftake('/section_user_properties_post.php?action=comments_ficread_off&subject=fic&subject_id=3', 1, 'comments_ficread_off_buttons', '')">20 комментариев из 28<div class="MessageCommentsReverse" id="MessageCommentsReverse" title="Изменить порядок вывода комментариев" onclick="pftake('/section_user_properties_post.php?action=comments_reverse&subject=fic&subject_id=3&section=fic_read', 1, 'MessageCommentsReverse', '');">
+            <a class="small_link" OnCLick="pftake('/section_message_comment_post.php?action=nextcomments&subject=fic&message_id=3&from=133889&shown=20&section=fic', 0, 'MessageCommentsNext_3', ' Загрузка комментариев');">Показать ещё 8 комментариев
+        
+            
+            
+                Aniana
+                12 августа 2011
+            
+        
+        
+            
+                Захотелось перечитать давно прочитанные и понравившиеся фики, и начала с вашего. Все-таки прекрасно, когда люди могут осознать и исправить свои ошибки. Огромное спасибо))
+                
+                
+            
+        
+        
+        
+            
+            
+                ПринцПолукровка
+                12 августа 2011
+            
+        
+        
+            
+                Отличный фанфик) Только немного затянуто... 
+                
+                
+            
+        
+        
+        
+            
+            
+                mary
+                26 августа 2011
+            
+        
+        
+            
+                А по-моему фик блестящий)Автору огромное спасибо за него))
+                
+                
+            
+        
+        
+        
+            
+            
+                Aniana
+                10 сентября 2011
+            
+        
+        
+            
+                А по-моему тоже все на своих местах, такие подробности в подобных историях необходимы))
+                
+                
+            
+        
+        
+        
+            
+            
+                Олифер
+                7 ноября 2011
+            
+        
+        
+            
+                Давно-давно я его читала, а коментарий оставить как-то позабыла... Красивый фик, ничуть не затянуто, все идеально вписывается в картинку. Атмосфера такая спокойная. Все, что нужно для релакса)))
+                
+                
+            
+        
+        
+        
+            
+            
+                Эгоистка_
+                30 марта 2012
+            
+        
+        
+            
+                Я читала(как оказалось) этот фик, но тут нет коммента,поэтому напишу)Понравилось)
+                
+                
+            
+        
+        
+        
+            
+            
+                Ариша
+                16 августа 2012
+            
+        
+        
+            
+                Очень милый и тёплый фик )) Спасибо автор ^)^
+                
+                
+            
+        
+        
+        
+            
+            
+                Rastava
+                1 октября 2012
+            
+        
+        
+            
+                очень нежно и красиво) большое спасибо)
+                
+                
+            
+        
+        
+        
+            
+            
+                Le-central
+                23 ноября 2012
+            
+        
+        
+            
+                Первый фик, который я прочитала в жанре Слэш, он меня и затянул. Прекрасная история, спасибо! Тут всё прописано так, как нужно. В избранное, однозначно.
+                
+                
+            
+        
+        
+        
+            
+            
+                kamidess
+                18 декабря 2012
+            
+        
+        
+            
+                Очень и очень здорово и тепло. 
+                
+                
+            
+        
+        
+        
+            
+            
+                Autum_n
+                5 февраля 2013
+            
+        
+        
+            
+                Много кто тут говорил, но я повторю: очень тёплый фик. Спасибо автору за этот маленький кусочек нежности)
+                
+                
+            
+        
+        
+        
+            
+            
+                Самуил Шем
+                7 июня 2013
+            
+        
+        
+            
+                Так романтично ))) Я думал трагедия какая-то, а оно так хорошо ) Спасибо )
+                
+                
+            
+        
+        
+        
+            
+            
+                Василика Мареш
+                30 июля 2013
+            
+        
+        
+            
+                Фик очень нежный. Вначале грустно и больно. Хочется стукнуть Драко по голове за такие слова, и Поттера тоже, потому что согласился, не возразил и не удержал. Хотя, наверное, такая передышка была полезна обоим, ведь они поняли, что друг без друга не могут, мир теряет свои краски, а жизнь наполняется тоской.
+Спасибо автору.
+                
+                
+            
+        
+        
+        
+            
+            
+                Снег255555
+                30 мая 2014
+            
+        
+        
+            
+                Это просто великолепно,растрогалась,разрыдалась...) Спасибо)
+                
+                
+            
+        
+        
+        
+            
+            
+                egorANDirina99999
+                16 февраля 2015
+            
+        
+        
+            
+                Очень мило, романтично и трогательно! 
+                
+                
+            
+        
+        
+        
+            
+            
+                Zhan
+                5 апреля 2015
+            
+        
+        
+            
+                Так тепло и уютно после прочтения. Спасибо автору за замечательный фанфик!
+                
+                
+            
+        
+        
+        
+            
+            
+                Хэлен Онлайн
+                28 апреля 2016
+            
+        
+        
+            
+                Сопливо, заместительно, ООСно. М-да. 
+                
+                
+            
+        
+        
+        
+            
+            
+                Not-alone
+                10 сентября 2016
+            
+        
+        
+            
+                Очень романтично и вовсе не так трагично, как можно было подумать, прочитав саммари)
+                
+                
+            
+        
+        
+        
+            
+            
+                Natti-cot
+                16 июля 2017
+            
+        
+        
+            
+                Красиво...романтично... даже всплакнулось ненароком...)
+                
+                
+            
+        
+        
+        
+            
+            
+                Alex Aurora Armor
+                23 июня 2020
+            
+        
+        
+            
+                Не хватило описаний и подробностей - почему расстались, что делали, как встретились вновь. Получилось вроде и приятно, сладко, с ХЭ, но и чего-то не доставало. Для полного счастья.
+                
+                
+            
+        
+        Чтобы написать комментарий,  войдитеЕсли вы не зарегистрированы, зарегистрируйтесь
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Глава 1.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+        Добавление фанфика в избранное
+        
+            
+                Метки
+                Заметка
+                Коллекции
+            
+        
+        
+            
+                
+                    Подписка на новые главы
+                    Прочитано
+                    Скачано
+                    Не читать
+                    Прочитать позже
+                    Жду окончания
+                    Понравилось
+                    Не понравилось
+                
+            
+            
+                
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                
+            
+            
+            
+                Когда фанфик был прочитан:
+                
+                    
+                        
+                        
+                        
+                            12345678910111213141516171819202122232425262728293031
+                        
+                        
+                            ЯнваряФевраляМартаАпреляМаяИюняИюляАвгустаСентябряОктябряНоябряДекабря
+                        
+                        
+                            2022202120202019201820172016201520142013201220112010200920082007200620052004200320022001
+                        
+                        
+                    
+                
+            
+        
+        
+            Здесь вы можете записать любые мысли и факты о произведении. Заметка будет доступна только вам. Максимальная длина заметки 3000 символов.
+            
+                
+                
+                    
+                    
+                
+            
+        
+        {cols}
+    Всё самое любимое (0)&raquo;&raquo;
+        Рекомендую прочитать (0)&raquo;&raquo;
+        Неизгладимые впечатления (0)&raquo;&raquo;
+        Прослушано (0)&raquo;&raquo;
+        Отличная обложка (0)&raquo;&raquo;Создать новую коллекцию
+        
+            <form id="new_collection_form" OnSubmit="pftake('/section_collections_post.php?action=collection_new', 'new_collection_form', 'new_collection_buttons', ''); return false;">
+                Коллекционировать:
+                 Фанфики
+                 Произведения с других сайтов
+                 Сообщения в блогах
+                
+            
+            
+        
+
+    Внимание! Сайт может содержать материалы, не предназначенные для просмотра лицами, не достигшими 18 лет! 
+    
+    Все права на героев и мир принадлежат законным правообладателям.
+    
+    2004-2021 &copy; Fanfics.me
+    
+        <!--
+            document.write("")
+            //-->
+        
+
+    
+        Закрыть
+        
+    
+    
+        Закрыть
+        
+    
+
+
+	Закрыть
+	
+
+&uarr; Вверх
+

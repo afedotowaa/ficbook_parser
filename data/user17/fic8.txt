@@ -1,0 +1,883 @@
+
+
+
+
+Со стороны | Гарри Поттер
+
+
+
+
+
+
+
+
+
+
+
+
+$(document).ready(function() {$('textarea').autoResize({animate:false, extraSpace : 20, limit: 600});});
+
+
+
+
+
+
+
+
+$(function () {
+    darklight = $('#darklight').html();
+    if (darklight == '1') {
+        var this_color = $('#read_color_darklight').html();
+    } else {
+        var this_color = $('#read_color').html();
+    }
+    const pickr = Pickr.create({
+        el: '.color-picker-text',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_color,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет'
+        }
+    });
+    pickr.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var color_default = $('#read_color_default_darklight').html();
+        } else {
+            var color_default = $('#read_color_default').html();
+        }
+        pickr.setColor(color_default);
+        $('.ReadTextContainerIn').css('color', color_default);
+        $('#read_color_new').html(color_default);
+        read_color_change('color');
+        pickr.hide();
+    }).on('change', color => {
+        new_color = color.toHEXA().toString();
+        pickr.setColor(new_color);
+        $('.ReadTextContainerIn').css('color', new_color);
+        $('#read_color_new').html(new_color);
+    }).on('hide', instance => {
+        read_color_change('color');
+    });
+
+    if (darklight == '1') {
+        var this_background = $('#read_background_darklight').html();
+    } else {
+        var this_background = $('#read_background').html();
+    }
+    const pickr2 = Pickr.create({
+        el: '.color-picker-bg',
+        theme: 'nano',
+        closeOnScroll: true,
+        default: this_background,
+        swatches: null,
+        components: {
+            preview: true,
+            opacity: false,
+            hue: true,
+            interaction: {
+                hex: false,
+                rgba: false,
+                hsla: false,
+                hsva: false,
+                cmyk: false,
+                input: false,
+                clear: false,
+                save: false,
+                cancel: true
+            }
+        },
+        i18n: {
+            'btn:cancel': 'Вернуть стандартный цвет',
+        }
+    });
+    pickr2.on('cancel', instance => {
+        darklight = $('#darklight').html();
+        if (darklight == '1') {
+            var background_default = $('#read_background_default_darklight').html();
+        } else {
+            var background_default = $('#read_background_default').html();
+        }
+        pickr2.setColor(background_default);
+        $('.ReadTextContainerIn').css('background', background_default);
+        $('#read_background_new').html(background_default);
+        read_color_change('background');
+        pickr2.hide();
+    }).on('change', color => {
+        new_background = color.toHEXA().toString();
+        pickr2.setColor(new_background);
+        $('.ReadTextContainerIn').css('background', new_background);
+        $('#read_background_new').html(new_background);
+    }).on('hide', instance => {
+        read_color_change('background');
+    });
+
+    // Переключение дневного/ночного режима
+    $('.edit-darklight').click(function () {
+        current = $('#darklight').html();
+
+        if (current == 0) {
+            darklight_on();
+            $('#darklight').html('1');
+            color = $('#read_color_darklight').html();
+            background = $('#read_background_darklight').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=1');
+        } else {
+            $('.darklight').removeClass('darklight');
+            $('#darklight').html('0');
+            color = $('#read_color').html();
+            background = $('#read_background').html();
+            pickr.setColor(color);
+            pickr2.setColor(background);
+            $('.ReadTextContainerIn').css('color', color).css('background', background);
+            pftake('/section_user_properties_post.php?action=read_prop_edit&prop=darklight&value=0');
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+ (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter13343842 = new Ya.Metrika({ id:13343842, clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");  
+
+
+    
+        
+                
+                    &nbsp;&darr;
+                
+        
+        
+                
+                    &nbsp;&uarr;
+                
+        
+    
+
+
+
+    
+        
+
+        
+            ФАНФИКИ МЕНЮ 
+            ФАНДОМЫ
+            ФАНАРТ
+            БЛОГИ
+        
+
+        
+            
+                Фандомы
+                Фанарт
+                Блоги
+                 Популярное
+                Популярное
+                Новинки
+                Горячие новинки
+                Все фанфики
+                Рекомендации
+                Коллекции
+                Заявки
+                Конкурсы
+                Фанфик в файл                Таблица переводов
+                Справка по сайту
+            
+        
+
+        
+        
+            
+                Искать фандом &raquo;
+                Искать фанфик &raquo;
+                Искать канон &raquo;
+                Искать персонажа &raquo;
+                Искать пользователя &raquo;
+            
+        
+
+        ВходРегистрация
+                
+                Регистрация
+            
+                Имя
+                
+                Пароль
+                
+                &nbsp;Чужой&nbsp;компьютер
+                
+                
+                Забыл пароль
+            
+        Войти при помощи
+        
+        
+        
+        
+    
+
+
+
+
+    
+        0
+                
+        
+            .ReadContent {width:100%;}
+            p.fict {font-size: 14px;;}
+            .ReadTextContainerIn {color:#000000; background:#FCFCE8;}
+        
+        Размер шрифта
+        
+            <input type="button" class="modern_button edit-font" data-edit="s" value=" 14px ">
+        
+        
+        Ширина текста
+        
+            <input type="button" class="modern_button edit-width" data-edit="s" value=" 100% ">
+        
+        
+        Выравнивание
+        
+            
+            
+                &nbsp;
+                &nbsp;
+                &nbsp;
+            
+            
+        
+        
+        Цвет текста
+        #000000
+        #EEEEEE
+        #000000
+        #eeeeee
+        
+        
+        
+        Цвет фона
+        #FCFCE8
+        #333333
+        #FCFCE8
+        #333333
+        
+        
+        
+        Показывать иллюстрации
+        
+            Большие
+            Маленькие
+            Без иллюстраций
+        
+    
+
+Закладка добавлена
+        
+            
+            8
+            
+            
+            
+            Со стороны&nbsp;(слэш)
+            21k +1387180Статистика
+            
+        
+            
+                
+            
+            
+            
+                Подписка
+                Прочитано
+                Рекомендовано
+                Скачано
+                Не читать
+                Прочитать позже
+                Жду окончания
+                Понравилось
+                Не понравилось
+                Заметка
+                В коллекции
+            
+        
+            
+            
+            
+            
+            
+            
+			Автор:
+			Ray
+			
+		
+            
+            
+            
+                Фандом:
+                Гарри Поттер
+                
+            
+            Персонажи:Гарри Поттер/Драко Малфой 
+            
+                Рейтинг:
+                PG-13
+                
+            
+            
+                Жанр:
+                Романтика
+                
+            
+            
+                Размер:
+                Мини | 8 Кб
+                
+            
+            
+                Статус:
+                Закончен
+                
+            
+            
+            
+            
+            
+                &nbsp;
+                 Проверено на&nbsp;грамотность 
+                
+            
+            
+                &nbsp;
+                30.03.2005 - 30.03.2005
+                
+            
+            
+            
+            Две девушки, наблюдая со стороны, по разному видят ситуацию. 
+            
+                
+            
+                QRCode
+            
+        
+            
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Часть 1. Панси.Часть 2. Гермиона.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+
+
+
+    (function(w, d, n, s, t) {
+        w[n] = w[n] || [];
+        w[n].push(function() {
+            var width = window.innerWidth;
+			if(!width) {
+				if(document.documentElement) {
+					width = document.documentElement.clientWidth;
+				}
+				width = Math.min(width, document.body.clientWidth);
+			}
+			if(!width) {
+				width = screen.width;
+			}
+			if (width > 730) {
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-6",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+			else
+			{
+				Ya.Context.AdvManager.render({
+					blockId: "R-A-90024-10",
+					renderTo: "yandex_rtb_R-A-90024-6",
+					async: true
+				});
+			}
+        });
+        t = d.getElementsByTagName("script")[0];
+        s = d.createElement("script");
+        s.type = "text/javascript";
+        s.src = "//an.yandex.ru/system/context.js";
+        s.async = true;
+        t.parentNode.insertBefore(s, t);
+    })(this, this.document, "yandexContextAsyncCallbacks");
+
+ Отключить рекламу
+Текст фанфика доступен для чтения только зарегистрированным пользователям старше 18 летЕсли вам есть 18 лет, вы можете зарегистрироваться и указать в профиле свой возраст - тогда текст фанфика станет доступен
+
+google_ad_client = "ca-pub-6359265769479039";
+google_ad_slot = "3770096198";
+google_ad_width = 300;
+google_ad_height = 250;
+
+	var width = window.innerWidth;
+	if(!width) {
+		if(document.documentElement) {
+			width = document.documentElement.clientWidth;
+		}
+		width = Math.min(width, document.body.clientWidth);
+	}
+	if(!width) {
+		width = screen.width;
+	}
+
+	if (width > 730) {
+		google_ad_slot = "6257650296";
+		google_ad_width = 728;
+		google_ad_height = 90;
+	}
+
+
+
+ Отключить рекламу
+
+
+                    
+            
+            
+                
+                Комментаторы
+            
+            
+        &nbsp;
+                
+            
+            <div id="comments_ficread_off_buttons" class="left cursor-pointer" title="Не показывать комментарии на странице чтения" style="margin-left:10px;" onclick="pftake('/section_user_properties_post.php?action=comments_ficread_off&subject=fic&subject_id=8', 1, 'comments_ficread_off_buttons', '')">18 комментариев<div class="MessageCommentsReverse" id="MessageCommentsReverse" title="Изменить порядок вывода комментариев" onclick="pftake('/section_user_properties_post.php?action=comments_reverse&subject=fic&subject_id=8&section=fic_read', 1, 'MessageCommentsReverse', '');">
+            
+        
+            
+            
+                БЛи
+                3 апреля 2006
+            
+        
+        
+            
+                интересно... но можно было бы немного поподробнее
+                
+                
+            
+        
+        
+        
+            
+            
+                Sonserina
+                22 сентября 2010
+            
+        
+        
+            
+                Гермиона поумнее Панси выходит))
+                
+                
+            
+        
+        
+        
+            
+            
+                Cissa Mar Volo
+                1 октября 2010
+            
+        
+        
+            
+                Весьма интересная идея.&quot;Но ведь это Малфой…&quot; хах, наверно, одна из самых распространенных фраз в гарридраках, где обо всем узнают друзья.)Спасибо.
+                
+                
+            
+        
+        
+        
+            
+            
+                растворяюсь.
+                9 октября 2010
+            
+        
+        
+            
+                Панси, как всегда, наивная дурочка. :)Понравилось.
+                
+                
+            
+        
+        
+        
+            
+            
+                Лис Лесной
+                28 октября 2010
+            
+        
+        
+            
+                настоящая дружба все понимает, принимает и прощает.любовь - нет.
+                
+                
+            
+        
+        
+        
+            
+            
+                Alice Raikes
+                10 февраля 2011
+            
+        
+        
+            
+                Очень хороший фанф))))))!!! Здесь очень хорошая мысль))) спасибо))
+                
+                
+            
+        
+        
+        
+            
+            
+                mary
+                26 августа 2011
+            
+        
+        
+            
+                Понравилось)) Очень мило^^    
+                
+                
+            
+        
+        
+        
+            
+            
+                Aniana
+                10 сентября 2011
+            
+        
+        
+            
+                У Паркинсон одно на уме, дальше своего носа не видит. А Гермиона в очередной раз доказала, что она настоящий друг.
+                
+                
+            
+        
+        
+        
+            
+            
+                Mr.fly
+                8 апреля 2012
+            
+        
+        
+            
+                Спасибо)) Очень оригинально представлено, хотя и характеры Герми и Панси вроде канонные. Панси такой дурой выходит, а Герми - святая. Хех.. Мне нравится!! 
+                
+                
+            
+        
+        
+        
+            
+            
+                НастяМяу
+                24 сентября 2012
+            
+        
+        
+            
+                Красота! Очень все как-то... реально, что-ли...
+                
+                
+            
+        
+        
+        
+            
+            
+                Rastava
+                1 октября 2012
+            
+        
+        
+            
+                Эх блин! Мне бы такую подругу как Герм!Все очень просто и очень правильно! Так, как и должно быть!Спасибо!
+                
+                
+            
+        
+        
+        
+            
+            
+                Autum_n
+                5 февраля 2013
+            
+        
+        
+            
+                Сюжет хороший, тянет на что-то побольше, чем мини)
+                
+                
+            
+        
+        
+        
+            
+            
+                Самуил Шем
+                7 июня 2013
+            
+        
+        
+            
+                Я вот прямо таки чувствую, что где-то он тут не окончен... но какой задел...
+                
+                
+            
+        
+        
+        
+            
+            
+                egorANDirina99999
+                16 февраля 2015
+            
+        
+        
+            
+                Отличный фан фик... из него было бы можно сотворить отдельную историю! )
+                
+                
+            
+        
+        
+        
+            
+            
+                Хэлен Онлайн
+                11 мая 2016
+            
+        
+        
+            
+                Банально, внезапно, заместительно.
+                
+                
+            
+        
+        
+        
+            
+            
+                Not-alone
+                19 июля 2016
+            
+        
+        
+            
+                Вот так бывает, когда одни сплошные догадки и отсутствие истинной картины (особенно касается Панси). Её принц нашёл себе собственного принца)))
+                
+                
+            
+        
+        
+        
+            
+            
+                Alex Aurora Armor
+                23 июня 2020
+            
+        
+        
+            
+                Панси Паркинсон в этом фике доказала, что слишком банальна. "Мой принц"? Гермиона доказала, что она великолепна. Да-да, Герми. 
+Гарри и Драко доказали, что Драрри - лучшее, что с ними случилось
+                
+                
+            
+        
+        
+        
+            
+            
+                Татка 1999
+                8 января в 00:41
+            
+        
+        
+            
+                Гермиона настоящий друг) милота
+                
+                
+            
+        
+        Чтобы написать комментарий,  войдитеЕсли вы не зарегистрированы, зарегистрируйтесь
+        &darr; Содержание &darr;
+        
+            
+            
+                Читать полностьюКомментарии
+                Рекомендации&nbsp;
+                Главы:
+                Часть 1. Панси.Часть 2. Гермиона.
+                &nbsp;
+                Для любителей клавиатуры:
+                «Ctrl+стрелка влево» - предыдущая глава
+                «Ctrl+стрелка вправо» - следующая глава
+            
+            &uarr; Свернуть &uarr;
+        
+        
+        Добавление фанфика в избранное
+        
+            
+                Метки
+                Заметка
+                Коллекции
+            
+        
+        
+            
+                
+                    Подписка на новые главы
+                    Прочитано
+                    Скачано
+                    Не читать
+                    Прочитать позже
+                    Жду окончания
+                    Понравилось
+                    Не понравилось
+                
+            
+            
+                
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                    &raquo;&raquo;
+                
+            
+            
+            
+                Когда фанфик был прочитан:
+                
+                    
+                        
+                        
+                        
+                            12345678910111213141516171819202122232425262728293031
+                        
+                        
+                            ЯнваряФевраляМартаАпреляМаяИюняИюляАвгустаСентябряОктябряНоябряДекабря
+                        
+                        
+                            2022202120202019201820172016201520142013201220112010200920082007200620052004200320022001
+                        
+                        
+                    
+                
+            
+        
+        
+            Здесь вы можете записать любые мысли и факты о произведении. Заметка будет доступна только вам. Максимальная длина заметки 3000 символов.
+            
+                
+                
+                    
+                    
+                
+            
+        
+        {cols}
+    Всё самое любимое (0)&raquo;&raquo;
+        Рекомендую прочитать (0)&raquo;&raquo;
+        Неизгладимые впечатления (0)&raquo;&raquo;
+        Прослушано (0)&raquo;&raquo;
+        Отличная обложка (0)&raquo;&raquo;Создать новую коллекцию
+        
+            <form id="new_collection_form" OnSubmit="pftake('/section_collections_post.php?action=collection_new', 'new_collection_form', 'new_collection_buttons', ''); return false;">
+                Коллекционировать:
+                 Фанфики
+                 Произведения с других сайтов
+                 Сообщения в блогах
+                
+            
+            
+        
+
+    Внимание! Сайт может содержать материалы, не предназначенные для просмотра лицами, не достигшими 18 лет! 
+    
+    Все права на героев и мир принадлежат законным правообладателям.
+    
+    2004-2021 &copy; Fanfics.me
+    
+        <!--
+            document.write("")
+            //-->
+        
+
+    
+        Закрыть
+        
+    
+    
+        Закрыть
+        
+    
+
+
+	Закрыть
+	
+
+&uarr; Вверх
+
